@@ -88,7 +88,7 @@ if (isset($_POST['submit1'])) {
 
 <body>
 
- 
+<img onclick="location.href='index.php'" src="images/back.png" class="logo" style="position: absolute; left: 45.5rem;height: auto; ">
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">

@@ -28,7 +28,7 @@ session_start();
 
     <style>
         .text-muted {
-            color: #ffffff !important;
+            color: #ffffff ;
             font-size: large;
         }
     </style>
@@ -57,6 +57,8 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link hover-underline-animation" href="course2.php">COURSES</a>
                         </li>
+                        <?php if(!isset($_SESSION['name'])){?>
+                        <?php }else{ ?>
                         <li class="nav-item dropdown">
                             <div class="dropdown">
                                 <a href="#" class="nav-link hover-underline-animation">PROFILE</a>
@@ -67,6 +69,8 @@ session_start();
                                 </div>
                             </div>
                         </li>
+                        <?php } ?>
+
                         <li class="nav-item">
                             <a class="nav-link hover-underline-animation" href="contact.php">CONTACT</a>
                         </li>

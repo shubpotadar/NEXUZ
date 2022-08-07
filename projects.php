@@ -151,6 +151,7 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project ");
                 </div>
                 <a href="index.php"><img src="logo.png" class="logo"></a>
                 <h3>NEXUZ</h3>
+                <img onclick="location.href='index.php'" src="images/back.png" class="logo" style="position: relative; height: auto; top: -3rem; left: 3rem;">
             </div>
 
             <div class='dashboard'>

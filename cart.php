@@ -71,7 +71,7 @@ session_start();
                             <a class="nav-link hover-underline-animation" href="contact.php">CONTACT</a>
                         </li>
     
-                        <?php if(!isset($_SESSION['name1'])){ ?>
+                        <?php if(!isset($_SESSION['name'])){ ?>
                             <li class="nav-item"> <a class="nav-link hover-underline-animation" href="login.php">LOGIN</a></li>
                         <?php }else{ ?>
                             <li class="nav-item"> <a class="nav-link hover-underline-animation" href="logout.php">LOGOUT</a></li>
