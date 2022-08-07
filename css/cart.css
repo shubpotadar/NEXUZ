@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css?family=Acme|Lobster|Patua+One|Rubik|Sniglet");
+
+header {
+    background: rgb(255, 255, 255) 100% ;
+    background-repeat: no-repeat;
+    /* fallback for old browsers */
+  overflow: visible;
+    background-size: 100%;
+    position: relative;
+    background-color: #eee;
+  
+}
+body {
+   
+    background: #eee;
+    line-height: 1.2;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    height: 100px;
+    width: 150px;
+  }
+
+.size span {
+    font-size: 11px
+}
+
+.col-md-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 100 100 66.666667%;
+    max-width: 100%;
+  }
+.color span {
+    font-size: 11px
+}
+.font-weight-bold {
+    font-weight: 700 ;
+    font-size: 25px;
+  }
+.product-deta {
+    margin-right: 70px
+}
+
+.gift-card:focus {
+    box-shadow: none
+}
+
+.pay-button {
+    color: #fff
+}
+.pay-button a:link{
+    color: rgb(119, 0, 255);
+}
+
+.pay-button a:visited{
+    color: rgb(0, 0, 0)
+}
+
+.pay-button:hover {
+    color: #fff
+}
+
+.pay-button:focus {
+    color: #fff;
+    box-shadow: none
+}
+
+.text-grey {
+    color: #a39f9f
+}
+
+.qty i {
+    font-size: 11px
+}
+
+.btn-warng {
+    color: white;
+    background-color:rgb(35, 39, 43);
+   
+  }
