@@ -106,6 +106,9 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project ");
 
                 <?php
                while($rows=mysqli_fetch_array($resultproject)){
+                $var=$rows['project_id'];
+               $ruser = mysqli_query($conn,"SELECT * FROM users where userid =$var ");
+               $rowuser=mysqli_fetch_array($ruser);
             ?>
 
                     <div class='box'>
@@ -118,7 +121,7 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project ");
                         <div class='buttons-container'>
                             <a class='buttons' href='#'>Join</a>
                             </div>
-                            <p style="text-align: center;">Username : <?php echo $_SESSION['name']; ?></p>
+                            <p style="text-align: center; margin: 9px 0px 0px 0px;">By : <?php echo $rowuser['name']; ?></p>
                     </div> 
                     <?php 
         // close while loop 
