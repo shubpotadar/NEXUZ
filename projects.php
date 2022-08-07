@@ -62,70 +62,7 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project ");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>project</title>
-
-    <style>
-            textarea {
-            resize: none;
-            }
-        .container#blur.active{
-            filter:blur(10px);
-            pointer-events:none;
-            user-select:none;
-        }
-
-        #popup{
-            position: fixed;
-            top:40%;
-            left:50%;
-            transform: translate(-50%,-50%);
-            width: 600px;
-            height:270px;
-            padding:50px;
-            border-radius: 11px;
-            box-shadow:0 5px 30px rgba(0,0,0,0.30);
-            background:#fff;
-            visibility:hidden;
-            opacity: 0;
-            transition:0.5s;
-            
-        }
-        #popup.active{
-            top:50%;
-            visibility:visible;
-            opacity: 1;
-            transition:0.5s;
-        }
-
-        .projecttitle input{
-            font-size:20px;
-            height:35px;
-            margin-bottom:20px;
-            left:50%;
-        }
-
-        #popup button{
-            border-radius: 20px;
-            border: 1px solid #4C3F91;
-            background-color: #343a40;
-            color: #FFFFFF;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 8px 20px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: transform 80ms ease-in;
-            position: relative;
-            top: 4px;
-            left: 180px;
-            margin: 20px;
-        }
-        #add{
-            position: relative;
-            top:8px;
-        }
-    
-    </style> 
+    <title>project</title> 
 </head>
 
 <body>
