@@ -2,7 +2,7 @@
         <div class="container-fluid p-0">
             <div class="row text-left">
                 <div class="col-md-5 col-sm-5">
-                    <h4 class="text-light">Adress</h4>
+                    <h4 class="text-light">Address</h4>
                     <p class="text-muted">BMS COLLEGE OF ENGINEERING, BASAVANGUDI,<br>
                         BANGALORE - 560004<br>
                         <br> Contact us at contact@nexuz.com

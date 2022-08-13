@@ -11,7 +11,7 @@ if (isset($_SESSION['name'])) {
 
 if (isset($_POST['submit2'])) {
 	$email = $_POST['email2'];
-	$password = md5($_POST['password2']);
+	$password = ($_POST['password2']);
 
 	$sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
 	$result = mysqli_query($conn, $sql);
@@ -19,6 +19,9 @@ if (isset($_POST['submit2'])) {
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION['name'] = $row['name'];
         $_SESSION['email'] = $row['email'];
+        $_SESSION['photo'] = $row['photo'];
+        $_SESSION['userid'] = $row['userid'];
+        
        header("Location: index.php");
 	} else {
 		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
@@ -38,8 +41,8 @@ if (isset($_SESSION['name'])) {
 if (isset($_POST['submit1'])) {
 	$name = $_POST['name1'];
 	$email = $_POST['email1'];
-	$password = md5($_POST['password1']);
-	$cpassword = md5($_POST['cpassword1']);
+	$password = ($_POST['password1']);
+	$cpassword = ($_POST['cpassword1']);
 
 	if ($password == $cpassword) {
 		$sql = "SELECT * FROM users WHERE email='$email'";
@@ -101,7 +104,7 @@ if (isset($_POST['submit1'])) {
                 </div>
                 <span>or use your email for registration</span>
                 <input type="text" placeholder="Name" name="name1" required/>
-                <input type="email" placeholder="Email"  name="email1" required/>
+                <input type="email" placeholder="Email"  name="email1"  required/>
                 <input type="password" placeholder="Password" name="password1" required/>
                 <input type="password" placeholder="Confirm Password" name="cpassword1" required/>
                 <button name="submit1">Sign Up</button>

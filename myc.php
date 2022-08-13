@@ -1,8 +1,9 @@
 <?php 
 include 'config.php';
-error_reporting(0);
+
 session_start();
-if (!isset($_SESSION['name'])) {
+
+if (!isset($_SESSION['userid'])) {
   header("Location: login.php");
 }
 
@@ -33,10 +34,10 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details");
 
 
 
-
 </head>
 
-<body>
+<body >
+
   <header>
     <div class="container-fluid p-0">
       <nav class="navbar navbar-expand-lg">
@@ -93,13 +94,13 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details");
     <div class="card">
       <div class="content">
         <div class="imgBx">
-          <img src="images\profile.jpg" alt="Avatar" />
+          <img src="uploads\<?php echo $_SESSION['photo']; ?>" alt="Avatar" />
         </div>
         <h2 style="font-weight: bold;"><?php echo $_SESSION['name']; ?><br /><span><?php echo $_SESSION['email']; ?></span></h2>
       </div>
       <ul class="navigation">
         <li>
-          <a href="#"><i class="far fa-user"></i>Edit Profile</a>
+          <a onclick="location.href='updateprofile.php'"><i class="far fa-user" ></i>Edit Profile</a>
         </li>
         <li>
           <a href="projects.php"><i class="far fa-comment-alt"></i>Projects</a>
@@ -346,7 +347,10 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details");
 include 'footer.php'
 ?>
 
+ 
+   
 </body>
+
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/script.js"></script>
 
