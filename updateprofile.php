@@ -92,7 +92,7 @@ if (isset($_POST["submit"])) {
                         </div>
                         <div class="inputBox">
                         <label for="photo">Photo</label>
-                        <input type="file" accept="image/*" id="photo" name="photo" >
+                        <input type="file" accept="image/*" id="photo" name="photo" required>
                     </div>
                     <img style="margin: inherit;" src="uploads/<?php echo $row["photo"]; ?>" width="100px" height="auto" alt="">
 
