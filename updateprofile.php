@@ -7,8 +7,8 @@ session_start();
 
 if (isset($_POST["submit"])) {
     $name = mysqli_real_escape_string($conn, $_POST["name"]);
-    $password = mysqli_real_escape_string($conn, md5($_POST["password"]));
-    $cpassword = mysqli_real_escape_string($conn, md5($_POST["cpassword"]));
+    $password = mysqli_real_escape_string($conn, ($_POST["password"]));
+    $cpassword = mysqli_real_escape_string($conn, ($_POST["cpassword"]));
 
     if ($password === $cpassword) {
         $photo_name = mysqli_real_escape_string($conn, $_FILES["photo"]["name"]);
