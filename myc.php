@@ -91,7 +91,7 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details");
   <!--comment-->
   
   <div class="containerd">
-    <div class="card">
+    <div class="card profile">
       <div class="content">
         <div class="imgBx">
           <img src="uploads\<?php echo $_SESSION['photo']; ?>" alt="Avatar" />
@@ -352,7 +352,7 @@ include 'footer.php'
 </body>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
+<script src='js\script.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
 
 </html>

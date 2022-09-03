@@ -196,5 +196,5 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details ");
     include 'footer.php'
     ?>
   </body>
-  <script src="js\script.js"></script>
+  <script src="js\scriptc.js"></script>
 </html>
