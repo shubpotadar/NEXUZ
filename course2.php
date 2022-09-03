@@ -72,7 +72,7 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details ");
 
                             <div class=" nav-link search-box">
                                 <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" class="input-search" placeholder="Type to Search...">
+                                <input id="searchTxt" type="text" class="input-search" placeholder="Type to Search...">
                             </div>
                         </li>
                         </li>
@@ -85,7 +85,7 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details ");
 
 
     <!-- MAIN Heading of Page -->
-    <div class="title">
+    <div class="title" id="title">
         <span>Computer Science Courses<br>on Nexuz</span>
         <div class="shortdesc">
             <p>Learn programming languages and concepts to prepare for a career in<br>hardware or software development
@@ -93,7 +93,7 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details ");
         </div>
     </div>
     <!-- SERVICES -->
-    <div class="service-swipe">
+    <div class="service-swipe" id="service-swipe">
         <div class="diffSection" id="services_section">
 
             <p style="font-size: 50px; padding: 100px; padding-bottom: 40px; color: rgb(255, 255, 255);"
@@ -137,45 +137,9 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details ");
         </a>
     </div>
 
+    <div class="inbt">
+        <span class="hover-underline-animation">Browse Projects</span>
 
-
-    <!-- Some KeyWords related to Topic -->
-    <div class="course">
-        <div class="cbox">
-            <div class="det"><a href="#java">Java</a></div>
-            <div class="det"><a href="https://developer.android.com/">Android Development</a></div>
-            <div class="det"><a href="https://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm">FXML</a></div>
-            <div class="det"><a href="#c++">C++</a></div>
-            <div class="det"><a href="https://www.geeksforgeeks.org/introduction-of-compiler-design/">Compiler
-                    Designing</a></div>
-            <div class="det"><a href="https://www.coursera.org/specializations/game-design-and-development">Game
-                    Development</a></div>
-            <div class="det"><a href="#algo">Algorithm</a></div>
-        </div>
-        <div class="cbox">
-            <div class="det"><a href="#python">Python</a></div>
-            <div class="det"><a href="https://www.coursera.org/learn/machine-learning">Machine Learning</a></div>
-            <div class="det"><a href="https://en.wikipedia.org/wiki/Artificial_intelligence">Artificial Intelligence</a>
-            </div>
-            <div class="det"><a href="https://en.wikipedia.org/wiki/Network">Networking</a></div>
-            <div class="det"><a href="https://www.kaspersky.co.in/resource-div/definitions/what-is-cyber-security">Cyber
-                    Security</a></div>
-            <div class="det"><a href="https://www.eccouncil.org/ethical-hacking/">Ethical Hacking</a></div>
-            <div class="det"><a href="#data">Data Structures</a></div>
-        </div>
-        <div class="cbox">
-            <div class="det"><a href="#html_css">HTML and CSS</a></div>
-            <div class="det"><a href="https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd0044">Full
-                    Stack Web Development</a></div>
-            <div class="det"><a
-                    href="https://uxplanet.org/what-is-ui-vs-ux-design-and-the-difference-d9113f6612de?gi=6d9d13f4cc95">UI
-                    Designing</a></div>
-            <div class="det"><a href="https://www.adobe.com/in/products/xd.html">Adobe XD</a></div>
-            <div class="det"><a href="https://www.sciencedirect.com/topics/computer-science/hardware-design">Hardware
-                    Designing</a></div>
-            <div class="det"><a href="#javascript">JavaScript</a></div>
-            <div class="det"><a href="#html_css">Bootstrap</a></div>
-        </div>
     </div>
 
 
@@ -203,6 +167,7 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details ");
          <?php 
         // close while loop 
         }?>
+
 </div>
     <!-- PROJECTS -->
     <div class="inbt">
@@ -493,6 +458,31 @@ include 'footer.php'
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+<script>
+let search = document.getElementById('searchTxt');
+search.addEventListener("input", function () {
+    let inputVal = search.value.toLowerCase();
+    let content = document.getElementsByClassName('content');
+    Array.from(content).forEach(function (element) {
+        let conttext = element.getElementsByTagName("h3")[0].innerText.toLowerCase();
+        if (conttext.includes(inputVal)) {
+            element.style.display = "block";
+            document.getElementById("title").style.display = "none";        
+            document.getElementById("service-swipe").style.display = "none";
+        }
+        else {
+            element.style.display = "none";
+        }
+        
+        if(search.value == "") {
+            document.getElementById("title").style.display = "block";        
+            document.getElementById("service-swipe").style.display = "flex";
+            }
+    })
+})
+
+
+</script>
 </body>
 
 </html>

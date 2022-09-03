@@ -1,0 +1,57 @@
+header {
+  background: rgb(255, 255, 255) 100% ;
+  background-repeat: no-repeat;
+  /* fallback for old browsers */
+overflow: visible;
+  background-size: 100%;
+  position: relative;
+  background-color: #eee;
+
+}
+.vl {
+  border-left: 4px solid rgb(0, 0, 0);
+  height: 506px;
+  margin: 0px 50px;
+}
+.play{
+  max-width: 506.25px;
+overflow: hidden;
+overflow-y: auto;
+scrollbar-width: none;
+}
+.main{
+  display: flex;
+  margin:10px 50px;
+  position: relative;
+  justify-content: center;
+  margin-bottom: 80px;
+  }
+
+  video {
+  width: 900px;
+}
+
+#playlist {
+  width: 500px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 506.25px;
+  margin-right: 50px;
+}
+.play a {
+  text-decoration: none;
+}
+.play .active a {
+  color: #5db0e6;
+  text-decoration: none;
+}
+.play li a {
+  color: #eeeedd;
+  background: #333;
+  padding: 17px;
+  display: block;
+}
+.play li a:hover {
+  text-decoration: none;
+}

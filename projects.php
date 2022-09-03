@@ -1,7 +1,7 @@
 
 <?php
 include 'config.php';
-error_reporting(0);
+
 session_start();
 
 if (!isset($_SESSION['name'])) {
@@ -107,7 +107,7 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project ");
                 <?php
                while($rows=mysqli_fetch_array($resultproject)){
                 $var=$rows['project_id'];
-               $ruser = mysqli_query($conn,"SELECT * FROM users where userid =$var ");
+               $ruser = mysqli_query($conn,"SELECT * FROM users where userid =$var");
                $rowuser=mysqli_fetch_array($ruser);
             ?>
 
