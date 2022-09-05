@@ -89,109 +89,52 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details ");
     </header>
 
 
-
+    <h2 style="margin: 20px 50px;">Kickstart with Python</h2>
     <div class="main">
     <video id="videoplaylist" autoplay  tabindex="0" controls>
-      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"/>
+      <source src="https://res.cloudinary.com/shubpotadar/video/upload/v1662349777/Introducing_Python_-_Python_for_Beginners_1_jxcd3l.mp4"/>
     </video>
     <div class="vl"></div>
 <div class="play">
     <ul id="playlist">
       <li class="active">
         <a
-          href="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+          href="https://res.cloudinary.com/shubpotadar/video/upload/v1662349777/Introducing_Python_-_Python_for_Beginners_1_jxcd3l.mp4"
         >
-          BigBuckBunny
+         => Introducing Python Python for Beginners
         </a>
       </li>
       <li>
         <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
+          href="https://res.cloudinary.com/shubpotadar/video/upload/v1662349779/Getting_Started_-_Python_for_Beginners_2_g8pgjp.mp4"
         >
-          ElephantsDream1
+        => Getting Started Python for Beginners
         </a>
       </li>
       <li>
         <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
+          href="https://res.cloudinary.com/shubpotadar/video/upload/v1662349777/Configuring_Visual_Studio_Code_-_Python_for_Beginners_3_jgjxsy.mp4"
         >
-          ElephantsDream2
+        => Configuring Visual Studio Code Python for Beginners
         </a>
       </li>
       <li>
         <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
+          href="https://res.cloudinary.com/shubpotadar/video/upload/v1662349777/Using_Print_-_Python_for_Beginners_4_cuz1vh.mp4"
         >
-          ElephantsDream3
+        => Using Print Python for Beginners
         </a>
       </li>
-      <li>
-        <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
-        >
-          ElephantsDream4
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
-        >
-          ElephantsDream5
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
-        >
-          ElephantsDream6
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
-        >
-          ElephantsDream7
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
-        >
-          ElephantsDream8
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
-        >
-          ElephantsDream9
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
-        >
-          ElephantsDream10
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
-        >
-          ElephantsDream11
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://res.cloudinary.com/shubpotadar/video/upload/v1661664141/samples/cld-sample-video.mp4"
-        >
-          ElephantsDream12
-        </a>
-      </li>
-
     </ul>
 </div>
 </div>
+<div style="background-color: rgba(0, 0, 0, 0.815);color: aliceblue;padding: 10px;position: relative;margin: 25px;">
+<h3 style="margin: 30px 50px;">Course details :</h3>
+<h5 style="margin: 30px 50px;">Kickstart with Python</h5>
+<h5 style="margin: 30px 50px;">By Microsoft Developers</h5>
+<h5 style="margin: 30px 50px;">10 hours course</h5>
+</div>
+
 <?php
     include 'footer.php'
     ?>

@@ -198,7 +198,6 @@ header .navbar-brand {
 }
 
 .inbt {
-  padding-left: 4rem;
   padding-top: 0rem;
   font-family: "Open Sans", sans-serif;
   font-size: 1.8rem;
@@ -231,7 +230,9 @@ header .navbar-brand {
 .service-swipe a {
   padding: 0;
   margin: 40px 10px;
+  align-items: center;
 }
+
 .service-swipe .s-card {
   display: flex;
   justify-content: space-around;
@@ -277,7 +278,6 @@ header .navbar-brand {
   width: 250px;
   /*height: 220px;*/
   background: #fff;
-  margin-right: 3rem;
   margin-bottom: 3rem;
   border-radius: 5px;
   cursor: pointer;

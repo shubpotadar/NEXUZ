@@ -1,6 +1,39 @@
 <?php 
-
+include 'config.php';
+error_reporting(0);
 session_start();
+
+if(isset($_POST['submitopinion'])){
+
+
+    if (!isset($_SESSION['name'])) {
+        header("Location: login.php");
+        echo    "<script type = 'text/javascript'>  
+                 alert ('Please login first to comment'); 
+                </script>";
+        
+    }
+
+    else{
+        $user=$_SESSION['user'];
+        echo    "<script type = 'text/javascript'>  
+                    console.log('$user'); 
+                </script>";
+        $user_name=$_SESSION["name"];
+        $user_comment=$_POST["comment"];
+        $user_role=$_POST["role"];
+        $user_organization=$_POST["location"];
+        $usercid=$_SESSION['userid'];
+    
+        $sql = "INSERT INTO user_comments (at_place, comment, name, role,usercid)
+					VALUES ('$user_organization', '$user_comment','$user_name','$user_role','$usercid')";
+    }
+    
+    
+    $result = mysqli_query($conn, $sql);
+}
+
+$user_comments = mysqli_query($conn,"SELECT * FROM  user_comments c, users u where c.usercid=u.userid");
 
 ?>
 
@@ -8,6 +41,7 @@ session_start();
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -23,6 +57,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css\home.css" />
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -31,12 +66,85 @@ session_start();
             color: #ffffff ;
             font-size: large;
         }
+
+        .addcommentbutton{
+            color: #dce1e6;
+            background-color: #333435;
+            border: 1px solid #4b4d4e;
+            border-radius: 4px;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            align-items: center;
+            border-radius: 3em;
+        }  
+        
+        .addcontainer#blur.active {
+            filter:blur(10px);
+            pointer-events:none;
+            user-select:none;
+        }
+
+        #popup{
+            position: fixed;
+            top:40%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            width: 600px;
+            height:380px;
+            padding:50px;
+            border-radius: 11px;
+            box-shadow:0 5px 30px rgba(0,0,0,0.30);
+            background:#fff;
+            visibility:hidden;
+            opacity: 0;
+            transition:0.5s;
+        }
+
+        #popup.active{
+            top:50%;
+            visibility:visible;
+            opacity: 1;
+            transition:0.5s;
+        }
+        
+        .projecttitle input{
+            font-size:20px;
+            height:35px;
+            margin-bottom:20px;
+            left:60%;
+            /* height:30px; */
+        }
+
+        #addopinionform input{
+            width:300px;
+            height:38px;
+            border-top-style: groove;
+            border-right-style: groove;
+            border-left-style: groove;
+            border-bottom-style: groove;
+            
+        }
+
+        #popup button{
+            box-shadow: 0.2px 0.2px 4px 0.2px rgb(0 0 0);
+            color:#fff;
+            font-family: 'Roboto';
+            background: #343a40;
+            border-radius: 4px;
+            margin:30px;
+            margin-top:40px;
+            padding:4px 22px;
+        }
+
+        
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="container-fluid p-0">
+    <div class="addcontainer" id="blur">
+    <header >
+        <div class="container-fluid p-0 ">
             <nav class="navbar navbar-expand-lg">
 
                 <img src="logo.png" class="logo">
@@ -94,6 +202,7 @@ session_start();
                 </div>
             </nav>
         </div>
+
         <div class="container text-right">
             <div class="row">
                 <div class="col-md-7 col-sm-12  text-black text-justify">
@@ -258,7 +367,7 @@ session_start();
 
                         <div class="box">
                             <img src="images/python.jpg" alt="">
-                            <h3 class="price">₹50</h3>
+                            <h3 class="price">₹750</h3>
                             <div class="content">
                                 <div class="stars">
 
@@ -280,7 +389,7 @@ session_start();
 
                         <div class="box">
                             <img src="images/C.png" alt="">
-                            <h3 class="price">₹50</h3>
+                            <h3 class="price">₹500</h3>
                             <div class="content">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
@@ -303,7 +412,7 @@ session_start();
 
                         <div class="box">
                             <img src="images/ai.jpg" alt="">
-                            <h3 class="price">₹100</h3>
+                            <h3 class="price">₹1000</h3>
                             <div class="content">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
@@ -325,7 +434,7 @@ session_start();
 
                         <div class="box">
                             <img src="images/cloud.jpg" alt="">
-                            <h3 class="price">₹50</h3>
+                            <h3 class="price">₹590</h3>
                             <div class="content">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
@@ -346,7 +455,7 @@ session_start();
 
                         <div class="box">
                             <img src="images/js.jpg" alt="">
-                            <h3 class="price">₹150</h3>
+                            <h3 class="price">₹2550</h3>
                             <div class="content">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
@@ -369,7 +478,7 @@ session_start();
 
                         <div class="box">
                             <img src="images/css.jpg" alt="">
-                            <h3 class="price">₹50</h3>
+                            <h3 class="price">₹850</h3>
                             <div class="content">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
@@ -397,86 +506,58 @@ session_start();
 
                 <!-- Section 4 -->
                 <section class="section-4">
+
                     <div class="container text-center">
                         <h1 class="text-dark hover-underline-animation">What our Reader's Say about us</h1>
                         <p class="text-secondary">Read on to learn more about their experience .</p>
                     </div>
+
                     <div class="team row ">
+
+                        <?php
+                            while($rows=mysqli_fetch_array($user_comments)){
+                                $u_name=$rows['name'];
+                                $u_comment=$rows['comment'];
+                                $u_role=$rows['role'];
+                                $u_org=$rows['at_place']; 
+                        ?>
+
                         <div class="col-md-4 col-12 text-center">
                             <div class="card mr-2 d-inline-block shadow-lg">
                                 <div class="card-img-top">
-                                    <img src="images/indian_1.jpg"
-                                        class="img-fluid border-radius p-4" alt="">
+                                <img src="uploads\<?php echo $rows['photo']; ?>" class="img-fluid border-radius p-4" alt="" style="aspect-ratio: 1/1;">
                                 </div>
+
                                 <div class="card-body">
-                                    <h3 class="card-title">Nishkara N</h3>
+                                    <h3 class="card-title"><?php  echo $u_name ?>  </h3>
                                     <p class="card-text">
-                                        "The most amazing thing about my course on React was the amazing
-                                        teaching style of the
-                                        well experienced tutors"
+                                        <?php echo $u_comment;
+                                        ?>
                                     </p>
                                     
-                                    <p class="text-black-50">Web developer at Google</p>
+                                    <p class="text-black-50"><?php echo $u_role ?> at <?php echo $u_org ?></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 col-12">
-                            <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
-                                <div class="carousel-inner text-center">
-                                    <div class="carousel-item active">
-                                        <div class="card mr-2 d-inline-block shadow">
-                                            <div class="card-img-top">
-                                                <img src="images/indian_2.jpg"
-                                                    class="img-fluid rounded-circle w-50 p-4" alt="">
-                                            </div>
-                                            <div class="card-body">
-                                                <h3 class="card-title">Allena Agnes</h3>
-                                                <p class="card-text">
-                                                    "The world class teaching material helped me change by
-                                                    career to be a
-                                                    software developer at the age of 45 and upgrade my skills to
-                                                    a professional
-                                                    level"
-                                                </p>
-                                                
-                                                <p class="text-black-50">Senior Engineer at Paypal</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="card  d-inline-block mr-2 shadow">
-                                            <div class="card-img-top">
-                                                <img src="https://images.pexels.com/photos/1181437/pexels-photo-1181437.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                                                    class="img-fluid rounded-circle w-50 p-4" alt="">
-                                            </div>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-12 text-center">
-                            <div class="card mr-2 d-inline-block shadow-lg">
-                                <div class="card-img-top">
-                                    <img src="images/indian_3.jpg"
-                                        class="img-fluid border-radius p-4" alt="">
-                                </div>
-                                <div class="card-body">
-                                    <h3 class="card-title">Louis Olivia</h3>
-                                    <p class="card-text">
-                                        "The biggest benefit was that I could design my own schedule and study
-                                        only when you
-                                        have time making learning something I look forward to! "
-                                    </p>
-                                   
-                                    <p class="text-black-50">Junior developer at Paytm</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-    </main>
 
+                        <?php
+                            }
+                        ?>
+
+
+
+
+                    </div>
+
+                </section>
+                <?php if(!isset($_SESSION['name'])){?>
+                        <?php }else{ ?>
+                            <button  class="addcommentbutton" id="" style="padding-bottom:10px;" onclick="toggle();">+ Add my opinion</button>
+                            <div style="padding-top:10px;">&nbsp;</div>
+                        <?php } ?>
+               
+
+    </main>
 
 
     
@@ -484,7 +565,32 @@ session_start();
     include 'footer.php'
     ?>
     
-  
+</div>
+
+    <div id="popup">
+                <form action="#" id='addopinionform' method="POST">
+                    <div class="projecttitle">
+                        <label for="projecttitle" >Comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input type="text" id="projecttitle" name="comment" required>
+                    </div>
+
+                    <br>
+                    <div class="projectdescription">
+                        <label for="projectdescription">&nbsp;&nbsp;&nbsp;Role:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input type="text" id="projectdescription" name="role" required>
+                    </div>
+                    <br><br>
+                    <div class="projectdescription">
+                        <label for="projectdescription">Company/College:</label>
+                        <input type="text" id="projectdescription" name="location" required>
+                    </div>
+                </form>
+
+                <button type="submit" form="addopinionform" name="submitopinion">Add</button>
+
+                <button onclick="toggle();">Cancel</button>
+    </div>
+    
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -493,4 +599,20 @@ session_start();
     <script src="new.js"></script>
     <script src="external.js"></script>
 
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+
 </body>
+
+<script type="text/javascript">
+        function toggle(){
+            var blur=document.getElementById('blur');
+            blur.classList.toggle('active')
+            var popup=document.getElementById('popup');
+            popup.classList.toggle('active')
+
+        }
+</script>

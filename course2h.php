@@ -60,8 +60,6 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project LIMIT 5");
                             </div>
                         </li>
                         <?php } ?>
-
-
                         <li class="nav-item">
                             <a class="nav-link hover-underline-animation" href="contact.php">CONTACT</a>
                         </li>
@@ -73,7 +71,7 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project LIMIT 5");
                         <?php } ?>
                         <li class="nav-item">
 
-                                <div class="nav-link search-box">
+                            <div class="nav-link search-box">
                                 <button class="btn-search"><i class="fas fa-search"></i></button>
                                 <input id="searchTxt" type="text" class="input-search" placeholder="Type to Search...">
                             </div>
@@ -87,7 +85,6 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project LIMIT 5");
     </header>
 
 
-    <!-- MAIN Heading of Page -->
     <div class="title" id="title">
         <span>Computer Science Courses<br>on Nexuz</span>
         <div class="shortdesc">
@@ -140,45 +137,8 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project LIMIT 5");
         </a>
     </div>
 
-
-
-    <!-- Some KeyWords related to Topic -->
-    <div class="course">
-        <div class="cbox">
-            <div class="det"><a href="#java">Java</a></div>
-            <div class="det"><a href="https://developer.android.com/">Android Development</a></div>
-            <div class="det"><a href="https://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm">FXML</a></div>
-            <div class="det"><a href="#c++">C++</a></div>
-            <div class="det"><a href="https://www.geeksforgeeks.org/introduction-of-compiler-design/">Compiler
-                    Designing</a></div>
-            <div class="det"><a href="https://www.coursera.org/specializations/game-design-and-development">Game
-                    Development</a></div>
-            <div class="det"><a href="#algo">Algorithm</a></div>
-        </div>
-        <div class="cbox">
-            <div class="det"><a href="#python">Python</a></div>
-            <div class="det"><a href="https://www.coursera.org/learn/machine-learning">Machine Learning</a></div>
-            <div class="det"><a href="https://en.wikipedia.org/wiki/Artificial_intelligence">Artificial Intelligence</a>
-            </div>
-            <div class="det"><a href="https://en.wikipedia.org/wiki/Network">Networking</a></div>
-            <div class="det"><a href="https://www.kaspersky.co.in/resource-div/definitions/what-is-cyber-security">Cyber
-                    Security</a></div>
-            <div class="det"><a href="https://www.eccouncil.org/ethical-hacking/">Ethical Hacking</a></div>
-            <div class="det"><a href="#data">Data Structures</a></div>
-        </div>
-        <div class="cbox">
-            <div class="det"><a href="#html_css">HTML and CSS</a></div>
-            <div class="det"><a href="https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd0044">Full
-                    Stack Web Development</a></div>
-            <div class="det"><a
-                    href="https://uxplanet.org/what-is-ui-vs-ux-design-and-the-difference-d9113f6612de?gi=6d9d13f4cc95">UI
-                    Designing</a></div>
-            <div class="det"><a href="https://www.adobe.com/in/products/xd.html">Adobe XD</a></div>
-            <div class="det"><a href="https://www.sciencedirect.com/topics/computer-science/hardware-design">Hardware
-                    Designing</a></div>
-            <div class="det"><a href="#javascript">JavaScript</a></div>
-            <div class="det"><a href="#html_css">Bootstrap</a></div>
-        </div>
+    <div class="inbt">
+        <span class="hover-underline-animation">Browse Projects</span>
     </div>
 
 
@@ -200,22 +160,19 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project LIMIT 5");
                 <li><i class="fa fa-star" aria-hidden="true"></i></li>
                 <li><i class="fa fa-star" aria-hidden="true"></i></li>
             </ul>
-            <!-- <button class="fourth">Buy Now</button> -->
-            <form method="post" action="cart.php?action=add&courseid=<?php echo $rows["courseid"]; ?>">
-            <!-- <input type="hidden" name="courseid" value="<?=$rows['courseid']?>"> -->
-            <input type="hidden" name="quantity" value="1"  />
-            <input class="fourth" type="submit" value="Add To Cart">
-            
-        </form>
+            <button class="fourth">Buy Now</button>
         </div>
    
          <?php 
-
         // close while loop 
         }?>
+
+
+
+
 </div>
     <!-- PROJECTS --> 
-<div class="inbt">
+    <div class="inbt">
         <span class="hover-underline-animation">Browse Projects</span>
     </div>
                <?php while($rowproj=mysqli_fetch_array($resultproject)){ ?>
@@ -498,14 +455,16 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project LIMIT 5");
         </div>
     </div>
 
-    <?php
+
+<?php
 include 'footer.php'
 ?>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script>
+
+<script>
 let search = document.getElementById('searchTxt');
 search.addEventListener("input", function () {
     let inputVal = search.value.toLowerCase();

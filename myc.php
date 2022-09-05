@@ -6,8 +6,13 @@ session_start();
 if (!isset($_SESSION['userid'])) {
   header("Location: login.php");
 }
+$userid=$_SESSION['userid'];
+$result = mysqli_query($conn,"SELECT * FROM  course_details where courseid in(select item_number from payments where userid=$userid)"); 
 
-$result = mysqli_query($conn,"SELECT * FROM  course_details"); 
+
+$projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where p.project_id=pt.project_id");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +96,7 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details");
   <!--comment-->
   
   <div class="containerd">
-    <div class="card profile">
+    <div class="card">
       <div class="content">
         <div class="imgBx">
           <img src="uploads\<?php echo $_SESSION['photo']; ?>" alt="Avatar" />
@@ -162,7 +167,7 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details");
             <div class="progress"></div>
             <h6 style="padding-top: 8px;text-align: right;font-size: 11px;">70%</h6>
           </div>
-          <button class="card__btn">Continue</button>
+          <button class="card__btn" onclick="location.href='content.php'" >Continue</button>
 
         </div>
       </div>
@@ -173,26 +178,29 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details");
   
     <h2 style="margin-bottom: 2rem; margin-left: 2.5rem; font-size: 25px;font-weight: bold;">Projects</h2>
 
-    <div class="card" style="background-image: url(images/machine-learning.png);">
+    <?php
+               while($rowproj=mysqli_fetch_array($projects)){
+              ?>
+
+
+
+    <div class="card" style="background-image: url(images/lib.png);">
       <div class="python">
         <div class="card__content">
-          <h2 class="card__heading">Loan Prediction Project</h2>
-          <p class="card__body"> This ML project aims to create a model
-            that will classify how much loan the user can obtain based on various factors such as the user’s marital
-            status, income, education.</p>
+          <h2 class="card__heading"><?php echo $rowproj['project_name']; ?></h2>
+          <p class="card__body"> <?php echo $rowproj['description']; ?></p>
           <div class="bar">
             <div class="progress"></div>
             <h6 style="padding-top: 8px;text-align: right;font-size: 11px;">20%</h6>
           </div>
-
-
           <button class="card__btn">Continue</button>
-
         </div>
       </div>
     </div>
-
-    <div class="card" style="background-image: url(images/insta.png);">
+    <?php 
+        // close while loop 
+        }?>
+    <!-- <div class="card" style="background-image: url(images/insta.png);">
       <div class="cloud">
         <div class="card__content">
           <h2 class="card__heading">Instagram clone using React Native</h2>
@@ -246,7 +254,7 @@ $result = mysqli_query($conn,"SELECT * FROM  course_details");
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!--   -->
 
   <div class="containerr">
@@ -352,7 +360,8 @@ include 'footer.php'
 </body>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='js\script.js'></script>
+<script src="js/script.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
 
 </html>

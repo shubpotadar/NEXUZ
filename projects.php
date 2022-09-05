@@ -11,11 +11,35 @@ if (!isset($_SESSION['name'])) {
 if(isset($_POST['submitproj'])){
     $proj_name=$_POST["project_title"];
     $proj_desc=$_POST["project_description"];
-    $sql = "INSERT INTO project (project_name, description)
-					VALUES ('$proj_name', '$proj_desc')";
+    $userpid=$_SESSION['userid'];
+    $sql = "INSERT INTO project (project_name, description,userpid)
+					VALUES ('$proj_name', '$proj_desc','$userpid')";
     
     $result = mysqli_query($conn, $sql);
 }
+
+if (isset($_POST['submitp'])) {
+    $proj_id=$_POST["submitp"];
+    $sql = "SELECT * FROM project_taken WHERE project_id='$proj_id'";
+    $result = mysqli_query($conn, $sql);
+    if (!$result->num_rows > 0) {
+      
+        $sql = "INSERT INTO project_taken (project_id) VALUES ('$proj_id')";
+        $resultp = mysqli_query($conn, $sql);
+        echo "<script>alert('Wow! User Registration Completed.')</script>";
+          
+    } else {
+        echo "<script>alert('Already enrolled into the project.')</script>";
+    }
+} 
+
+if (isset($_POST['submitp'])) {
+    $proj_id=$_POST["submitp"];
+    $sql = "INSERT INTO project_taken (project_id)
+    VALUES ('$proj_id')";
+    $resultp = mysqli_query($conn, $sql);
+}
+   
 
 $resultproject = mysqli_query($conn,"SELECT * FROM  project ");
 ?>
@@ -106,7 +130,7 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project ");
 
                 <?php
                while($rows=mysqli_fetch_array($resultproject)){
-                $var=$rows['project_id'];
+                $var=$rows['userpid'];
                $ruser = mysqli_query($conn,"SELECT * FROM users where userid =$var");
                $rowuser=mysqli_fetch_array($ruser);
             ?>
@@ -119,7 +143,13 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project ");
                         <p><?php echo $rows['description']; ?></p>
                         <div class='line'></div>
                         <div class='buttons-container'>
-                            <a class='buttons' href='#'>Join</a>
+                           
+                        <form action="#" method="POST">
+                        <button class='buttons' value="<?php echo $rows['project_id']; ?>" name="submitp">Join</button>          
+                        </form>
+
+
+
                             </div>
                             <p style="text-align: center; margin: 9px 0px 0px 0px;">By : <?php echo $rowuser['name']; ?></p>
                     </div> 
