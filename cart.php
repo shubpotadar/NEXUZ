@@ -248,7 +248,7 @@ $item_price = $item["quantity"]*$item["cost"];
                         <div class="d-flex flex-column align-items-center product-details"><span
                                 class="font-weight-bold"><?php echo $item["coursename"]; ?></span>
                             <div class="d-flex flex-row product-desc">
-                                <div class="size mr-1"><span class="font-weight-bold"><?php echo $item["descrip"]; ?></span></div>
+                                <div class="size mr-1"><span class="font-weight-bold">||&nbsp;<?php echo $item["descrip"]; ?></span></div>
                                 <div class="color"><span class="font-weight-bold">&nbsp;||</span></div>
                             </div>
                         </div>
@@ -265,23 +265,6 @@ $total_price += ($item["cost"]*$item["quantity"]);
 }
 ?>          
 
-                    <!-- <div
-                        class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-                        <div class="mr-1"><img class="rounded" src="images/python.jpg" width="70"></div>
-                        <div class="d-flex flex-column align-items-center product-details"><span
-                                class="font-weight-bold">Python development</span>
-                            <div class="d-flex flex-row product-desc">
-                                <div class="size mr-1"><span class="font-weight-bold">&nbsp;|| Python Training
-                                        course</span></div>
-                                <div class="color"><span class="font-weight-bold">&nbsp||</span></div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h5 class="text-grey">₹50.00</h5>
-                        </div>
-                        <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
-                    </div> -->
                     <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button
                             style="color:rgb(255, 255, 255); align-self: left;"
                             class="btn btn-warng btn-block btn-lg ml-2 pay-button" type="button">Payable amount :
@@ -290,8 +273,7 @@ $total_price += ($item["cost"]*$item["quantity"]);
                             class="form-control border-0 gift-card" placeholder="discount code/gift card"><button
                             class="btn btn-outline-warning btn-sm ml-2" type="button">Apply</button></div>
                     <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
-                        <!-- <button style="color:black;" class="btn btn-warning btn-block btn-lg ml-2 pay-button"
-                            type="button"><a href="pay.php">Proceed to Pay</a></button> -->
+                
                             
                             
                             

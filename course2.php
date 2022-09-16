@@ -218,8 +218,8 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project LIMIT 5");
 <div class="inbt">
         <span class="hover-underline-animation">Browse Projects</span>
     </div>
-               <?php while($rowproj=mysqli_fetch_array($resultproject)){ ?>
     <div class="project-panel">
+               <?php while($rowproj=mysqli_fetch_array($resultproject)){ ?>
          <div class="project-card">
             <img src="images/lib.png">
             <div class="info">
@@ -228,54 +228,7 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project LIMIT 5");
             </div>
         </div>
         <?php } ?>
-        <!--<div class="project-card">
-            <img src="images/web_crawler.jpg">
-            <div class="info">
-                <h4>Web crawler app</h4>
-                <p> Web crawler is an Internet bot that browses the WWW and is operated by search engines for Web
-                    indexing.Build one using node js!</p>
-                <div class="download"><a href="https://github.com/roshan9419" target="_blank">Download</a></div>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="images/photo-pj.jpg">
-            <div class="info">
-                <h4>Photo Gallery app</h4>
-                <p>This Website helps you to manage your Personal Photos developed using HTML, CSS & JavaScript.Make
-                    your customised google photos!</p>
-                <div class="download"><a href="https://github.com/roshan9419" target="_blank">Download</a></div>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="images/twitter-proj.jpg">
-            <div class="info">
-                <h4>Sentiment analysis</h4>
-                <p>This Website helps you in your analyse data using the twitter api and python.Now you can make this
-                    amazing project for your portfolio!</p>
-                <div class="download"><a href="https://github.com/roshan9419" target="_blank">Download</a></div>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="images/face_recognition-pj.jpg">
-            <div class="info">
-                <h4>Face Recognition </h4>
-                <p>Face detection is a computer technology used to identify human faces in digital images.Now you can
-                    build one using OpenCV.</p>
-                <div class="download"><a href="https://github.com/roshan9419/smart_traffic" target="_blank">Download</a>
-                </div>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="images/car-pj.jpg">
-            <div class="info">
-                <h4>Car pooling app</h4>
-                <p>Build a car pooling multi-platform app using React Native. Learn to
-                    use a back-end service like firebase and deploy to the playstore.</p>
-                <div class="download"><a href="https://github.com/roshan9419/smart_traffic" target="_blank">Download</a>
-                </div>
-            </div>
-        </div> -->
-    </div>
+     </div> 
     <?php if(!isset($_SESSION['name'])){?>
         <div style="width:100%; position:relative;align-items: center;display: flex;justify-content: center;"><button onclick="location.href='login.php'" class="fourth">Find more..</button></div>
                         <?php }else{ ?>

@@ -19,7 +19,13 @@ if (isset($_POST['submit2'])) {
         $_SESSION['email'] = $row['email'];
         $_SESSION['photo'] = $row['photo'];
         $_SESSION['userid'] = $row['userid'];
-
+        $usersid = $row['userid'];
+        
+        date_default_timezone_set("Asia/Calcutta");
+		$date = date('Y-m-d');
+		$time = date('H:i:s');
+		$sql4 = "INSERT INTO sessionhis (usersid, startdate, starttime) VALUES ('$usersid', '$date', '$time')";
+		$result4 = mysqli_query($conn, $sql4);
         header("Location: index.php");
     } else {
         echo "<script>alert('Woops! Email or Password is Wrong.')</script>";

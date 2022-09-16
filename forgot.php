@@ -1,7 +1,7 @@
 <?php
 session_start();
 $error = array();
-
+include 'config.php';
 require "mail.php";
 
 if (!$con = mysqli_connect("localhost", "root", "", "loginnexuz")) {
@@ -19,8 +19,9 @@ if (count($_POST) > 0) {
 
 	switch ($mode) {
 		case 'enter_email':
-			// code...
+			
 			$email = $_POST['email'];
+			$_SESSION['forgetmail']=$email;
 			//validate email
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				$error[] = "Please enter a valid email";
@@ -224,6 +225,12 @@ function is_code_correct($code)
 
 			<div class="container" id="container">
 				<div class="form-container sign-in-container">
+				<?php 
+				$emailfor= $_SESSION['forgetmail'];
+				$resultcode = mysqli_query($conn,"SELECT code FROM codes where email='$emailfor' order by id desc limit 1");
+                $rsfor=mysqli_fetch_array($resultcode);
+				echo "<script>alert('Your reset code is ".$rsfor['code']."')</script>";
+				?>
 					<form method="post" action="forgot.php?mode=enter_code">
 					<img onclick="location.href='index.php'" src="logo.png" class="logo">
 						<h2>Password Reset</h2>
@@ -270,8 +277,8 @@ function is_code_correct($code)
 					?>
 				
 
-				<input class="textbox" type="text" name="password" placeholder="Password"><br>
-				<input class="textbox" type="text" name="password2" placeholder="Retype Password"><br>
+				<input class="textbox" type="text" name="password" placeholder="Password" required><br>
+				<input class="textbox" type="text" name="password2" placeholder="Retype Password" required><br>
 				<br style="clear: both;">
 				<input type="submit" value="Next" style="float: right;">
 				<button class="card__btn" name="submit1">start over</button>

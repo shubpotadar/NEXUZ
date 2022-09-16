@@ -164,9 +164,9 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project ");
                         <label style="position:relative; top:-18px;" for="projectdescription">Description</label>
                         <textarea style="position:relative; left:44px" id="projecttitle" name="project_description" rows="3" cols="55" required></textarea>
                     </div>
-                    <div class="teammembers"   for="projectmem" >
-                        <label style="position:relative; top:-18px; " for="projectmem">Members</label>
-                        <textarea  id="projectmem" style="position:relative; left:57px" name="project_mem" rows="3" cols="55" required></textarea>
+                    <div class="teammembers"   for="projectdescription" >
+                        <label style="position:relative; top:-18px; " for="projectdescription">Members</label>
+                        <textarea  id="projecttitle" style="position:relative; left:57px" name="project_description" rows="3" cols="55" required></textarea>
                     </div>
                 </form>
 

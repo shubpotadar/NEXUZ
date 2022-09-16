@@ -9,7 +9,10 @@ if (!isset($_SESSION['userid'])) {
 $userid=$_SESSION['userid'];
 $result = mysqli_query($conn,"SELECT * FROM  course_details where courseid in(select item_number from payments where userid=$userid)"); 
 
-$projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where p.project_id=pt.project_id and pt.userid=$userid");
+
+$projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where p.project_id=pt.project_id");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,23 +96,12 @@ $projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where
   <!--comment-->
   
   <div class="containerd">
-    <div class="card profile">
+    <div class="card">
       <div class="content">
         <div class="imgBx">
           <img src="uploads\<?php echo $_SESSION['photo']; ?>" alt="Avatar" />
         </div>
-        
-        <h2 style="font-weight: bold;">
-        <?php echo $_SESSION['name']; ?><br /><span><?php echo $_SESSION['email']; ?></span><br>
-
-        <?php $sql2 = "SELECT * FROM sessionhis WHERE usersid='$userid' order by sessionid desc limit 1 OFFSET 1";
-                    $result2 = mysqli_query($conn, $sql2);
-                    while($r=mysqli_fetch_array($result2)){
-                    ?> 
-        <span style="font-weight: bold; font-size: 9.5px;">LAST LOGIN : <?php echo $r['starttime'];?><br>ON : <?php echo $r['startdate'];?></span>
-        <?php } ?>
-      </h2>
-        
+        <h2 style="font-weight: bold;"><?php echo $_SESSION['name']; ?><br /><span><?php echo $_SESSION['email']; ?></span></h2>
       </div>
       <ul class="navigation">
         <li>
@@ -180,22 +172,90 @@ $projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where
         </div>
       </div>
     </div>
-    <?php } ?>
+<?php 
+        // close while loop 
+        }?>
   
     <h2 style="margin-bottom: 2rem; margin-left: 2.5rem; font-size: 25px;font-weight: bold;">Projects</h2>
 
+    <?php
+               while($rowproj=mysqli_fetch_array($projects)){
+              ?>
 
-    <?php while($rowproj=mysqli_fetch_array($projects)){  ?>
+
+
     <div class="card" style="background-image: url(images/lib.png);">
       <div class="python">
         <div class="card__content">
           <h2 class="card__heading"><?php echo $rowproj['project_name']; ?></h2>
           <p class="card__body"> <?php echo $rowproj['description']; ?></p>
+          <div class="bar">
+            <div class="progress"></div>
+            <h6 style="padding-top: 8px;text-align: right;font-size: 11px;">20%</h6>
+          </div>
           <button class="card__btn">Continue</button>
         </div>
       </div>
     </div>
-    <?php } ?>
+    <?php 
+        // close while loop 
+        }?>
+    <!-- <div class="card" style="background-image: url(images/insta.png);">
+      <div class="cloud">
+        <div class="card__content">
+          <h2 class="card__heading">Instagram clone using React Native</h2>
+          <p class="card__body">Our pre-built social media app software that helps entrepreneurs to
+            build an Instagram-like app with unique features like creation of price-locked exclusive posts.
+          </p>
+          <div class="bar">
+            <div class="progress"></div>
+            <h6 style="padding-top: 8px;text-align: right;font-size: 11px;">90%</h6>
+          </div>
+
+
+          <button class="card__btn">Continue</button>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="background-image: url(images/dev.png);">
+      <div class="js">
+        <div class="card__content">
+          <h2 class="card__heading">Airline reservation system using Java</h2>
+          <p class="card__body">A web-based Java project which is a
+            comprehensive passenger processing system that includes inventory and online
+            transactions with realtime updations.</p>
+          <div class="bar">
+            <div class="progress"></div>
+            <h6 style="padding-top: 8px;text-align: right;font-size: 11px;">50%</h6>
+          </div>
+
+
+          <button class="card__btn">Continue</button>
+
+        </div>
+      </div>
+    </div>
+    <div class="card" style="background-image: url(images/algorithm.png);">
+      <div class="react">
+        <div class="card__content">
+          <h2 class="card__heading">BSTs-memoization algorithm</h2>
+          <p class="card__body">Memoization related to dynamic programming. In reduction-memoizing BSTs, each node can
+            memoize a function of its subtrees. </p>
+          <div class="bar">
+            <div class="progress"></div>
+            <h6 style="padding-top: 8px;text-align: right;font-size: 11px;">78%</h6>
+          </div>
+
+
+          <button class="card__btn">Continue</button>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!--   -->
 
   <div class="containerr">
    <h2 style="margin-bottom: 2rem; margin-left: 2.5rem; font-size: 25px; font-weight: bold;">Socialize</h2>
@@ -289,15 +349,19 @@ $projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where
     </div>
 
 
-    </div>
   </div>
+
   <?php
 include 'footer.php'
-?> 
+?>
+
+ 
+   
 </body>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='js\script.js'></script>
+<script src="js\script.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
 
 </html>

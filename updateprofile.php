@@ -24,6 +24,7 @@ if (isset($_POST["submit"])) {
             if ($result) {
                 echo "<script>alert('Profile Updated successfully.');</script>";
                 move_uploaded_file($photo_tmp_name, "uploads/" . $photo_new_name);
+                header("Location: myc.php");
             } else {
                 echo "<script>alert('Profile can not Updated.');</script>";
                 echo  $conn->error;
