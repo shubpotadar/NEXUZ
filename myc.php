@@ -8,6 +8,7 @@ if (!isset($_SESSION['userid'])) {
 }
 $userid=$_SESSION['userid'];
 $result = mysqli_query($conn,"SELECT * FROM  course_details where courseid in(select item_number from payments where userid=$userid)"); 
+$resultcerti = mysqli_query($conn,"SELECT * FROM  course_details where courseid in(select item_number from payments where userid=$userid)");
 
 $projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where p.project_id=pt.project_id and pt.userid=$userid");
 ?>
@@ -34,12 +35,49 @@ $projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where
   <link rel="stylesheet" href="css\home.css">
   <link rel="stylesheet" href="css\myyc.css">
 
+  <style>
+            .addcontainer#blur.active {
+            filter:blur(10px);
+            pointer-events:none;
+            user-select:none;
+        }
+
+        #popup{
+            position: fixed;
+           
+            left:50%;
+            display: grid;
+            row-gap: 1rem;
+            transform: translate(-50%,-50%);
+            padding:50px;
+            border-radius: 11px;
+            box-shadow:0 5px 30px rgba(0,0,0,0.30);
+            background:#fff;
+        }
+
+        #popup.active{
+            top:50%;
+            visibility:visible;
+            opacity: 1;
+            transition:0.5s;
+        }
+        #popup button{
+            color:#fff;
+            font-size: medium;
+            background: #343a40;
+            margin:20px;
+            margin-top:30px;
+            padding:4px 22px;
+        }
+
+        
+    </style>
 
 
 </head>
 
 <body >
-
+<div class="addcontainer" id="blur">
   <header>
     <div class="container-fluid p-0">
       <nav class="navbar navbar-expand-lg">
@@ -118,8 +156,13 @@ $projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where
         <li>
           <a href="projects.php"><i class="far fa-comment-alt"></i>Projects</a>
         </li>
+        <li>
+          <a onclick="certificate();"><i class="fas fa-certificate"></i>Certificates</a>
+        </li>
+        <li>
           <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
         </li>
+        
       </ul>
       <div class="togg">
         <i class="fas fa-chevron-down"></i>
@@ -171,10 +214,6 @@ $projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where
         <div class="card__content">
           <h2 class="card__heading"><?php echo $rows['coursename']; ?></h2>
           <p class="card__body"><?php echo $rows['descrip']; ?></p>
-          <div class="bar">
-            <div class="progress"></div>
-            <h6 style="padding-top: 8px;text-align: right;font-size: 11px;">70%</h6>
-          </div>
           <button class="card__btn" onclick="location.href='content.php'" >Continue</button>
 
         </div>
@@ -294,6 +333,35 @@ $projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where
   <?php
 include 'footer.php'
 ?> 
+ </div>
+
+ <div id="popup">
+ <h2 style="margin: .5rem; text-align: center;">Download Certificates</h2>   
+   <div class="drop__list" id="drop-items">
+  
+    <?php
+    while($rs=mysqli_fetch_array($resultcerti)){
+   ?>
+        <div class="drop__card">
+          <div class="drop__data">
+            <div>
+              <span class="drop__profession"><?php echo $rs['coursename']; ?></span>
+            </div>
+          </div>
+
+          <div>
+            <a href="temp.php?name=<?php echo $rs['coursename']; ?>" class="drop__social"><i class="fa fa-download" aria-hidden="true"></i></a>
+          </div>
+         </div> 
+         <?php }
+   ?> 
+    </div>
+    <button onclick="certificate();">Go back</button>
+ </div>
+
+
+
+
 </body>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

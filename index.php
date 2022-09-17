@@ -63,7 +63,7 @@ $user_comments = mysqli_query($conn,"SELECT * FROM  user_comments c, users u whe
 
     <style>
         .text-muted {
-            color: #ffffff ;
+            color: #fff !important;
             font-size: large;
         }
 
@@ -127,9 +127,7 @@ $user_comments = mysqli_query($conn,"SELECT * FROM  user_comments c, users u whe
         }
 
         #popup button{
-            box-shadow: 0.2px 0.2px 4px 0.2px rgb(0 0 0);
             color:#fff;
-            font-family: 'Roboto';
             background: #343a40;
             border-radius: 4px;
             margin:30px;
