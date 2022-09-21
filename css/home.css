@@ -3,6 +3,9 @@
 * {
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 header,
 section {
@@ -410,7 +413,6 @@ header .container .col-md-7 p {
   font-size: 1.2rem;
   padding: 1rem;
   color: rgb(0, 0, 0);
- 
 }
 
 .course .box-container .box .price {

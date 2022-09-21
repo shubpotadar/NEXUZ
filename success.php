@@ -25,11 +25,18 @@ $row = mysqli_fetch_assoc($resultset);
 if(!empty($txn_id)){
     //Insert tansaction data into the database
     mysqli_query($conn, "INSERT INTO payments(userid,item_number,txn_id,payment_gross,currency_code,payment_status) VALUES('".$userid."','".$item_number."','".$txn_id."','".$payment_gross."','".$currency_code."','".$payment_status."')");
+
+    $resultpc=mysqli_query($conn,"SELECT paymentid FROM payments WHERE userid='$userid' order by paymentid desc limit 1");
+    $rowpc = mysqli_fetch_assoc($resultpc);
+    $paymentid=$rowpc['paymentid'];
+    echo $paymentid;
+    mysqli_query($conn, "INSERT INTO course_pay (courseid,paymentid) VALUES ('$item_number','$paymentid')");
+
 	$last_insert_id = mysqli_insert_id($conn);  
 	$_SESSION['payment_status']='Completed';
 ?>
 	<h1>Your payment has been successful.</h1>
-    <h1>Your Payment ID - <?php echo $last_insert_id; ?>.</h1>
+    <h1>Your Payment ID - <?php echo $paymentid; ?>.</h1>
 <?php
 }
 ?>

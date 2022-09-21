@@ -20,7 +20,7 @@
     
     <div class="wrapper">
         <div class="header">
-          <h1>Review</h1>
+          <h1>CONTACT</h1>
           <p>Anything we could improve or that you liked?</p>
         </div>
         <form>

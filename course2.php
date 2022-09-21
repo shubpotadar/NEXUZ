@@ -63,7 +63,7 @@ $resultproject = mysqli_query($conn,"SELECT * FROM  project LIMIT 5");
 
 
                         <li class="nav-item">
-                            <a class="nav-link hover-underline-animation" href="contact.php">CONTACT</a>
+                            <a class="nav-link hover-underline-animation" href="index.php#review">REVIEW</a>
                         </li>
 
                         <?php if(!isset($_SESSION['name'])){ ?>

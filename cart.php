@@ -202,7 +202,7 @@ $paypal_email = 'sb-ar7od18076071@business.example.com';
 
 
                         <li class="nav-item">
-                            <a class="nav-link hover-underline-animation" href="contact.php">CONTACT</a>
+                            <a class="nav-link hover-underline-animation" href="index.php#review">REVIEW</a>
                         </li>
 
                         <?php if(!isset($_SESSION['name'])){ ?>

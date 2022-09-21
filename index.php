@@ -178,7 +178,7 @@ $user_comments = mysqli_query($conn,"SELECT * FROM  user_comments c, users u whe
                         <?php } ?>
 
                         <li class="nav-item">
-                            <a class="nav-link hover-underline-animation" href="contact.php">CONTACT</a>
+                            <a class="nav-link hover-underline-animation" href="index.php#review">REVIEW</a>
                         </li>
 
                         <?php if(!isset($_SESSION['name'])){?>
@@ -503,11 +503,11 @@ $user_comments = mysqli_query($conn,"SELECT * FROM  user_comments c, users u whe
 
 
                 <!-- Section 4 -->
-                <section class="section-4">
+                <section id="review" class="section-4">
 
                     <div class="container text-center">
-                        <h1 class="text-dark hover-underline-animation">What our Reader's Say about us</h1>
-                        <p class="text-secondary">Read on to learn more about their experience .</p>
+                        <h1 class="text-dark hover-underline-animation">What our Users say about us</h1>
+                        <p class="text-secondary">Check the review, about their experience .</p>
                     </div>
 
                     <div class="team row ">

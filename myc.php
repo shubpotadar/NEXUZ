@@ -107,7 +107,7 @@ $projects = mysqli_query($conn,"SELECT * FROM  project p, project_taken pt where
                             </div>
                         </li>
             <li class="nav-item">
-              <a class="nav-link hover-underline-animation" href="contact.php">CONTACT</a>
+              <a class="nav-link hover-underline-animation" href="index.php#review">REVIEW</a>
             </li>
             <?php if(!isset($_SESSION['name'])){ ?>
                             <li class="nav-item"> <a class="nav-link hover-underline-animation" href="login.php">LOGIN</a></li>

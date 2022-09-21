@@ -47,13 +47,19 @@ if (isset($_POST['submit1'])) {
     $email = $_POST['email1'];
     $password = ($_POST['password1']);
     $cpassword = ($_POST['cpassword1']);
+    $instructor  = 0;
+
+    if(isset($_POST['instructor']))
+{
+    $instructor  = 1;
+}
 
     if ($password == $cpassword) {
         $sql = "SELECT * FROM users WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sql = "INSERT INTO users (name, email, password)
-					VALUES ('$name', '$email', '$password')";
+            $sql = "INSERT INTO users (name, email, password, instructor)
+					VALUES ('$name', '$email', '$password','$instructor')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 echo "<script>alert('Wow! User Registration Completed.')</script>";
@@ -117,36 +123,13 @@ if (isset($_POST['submit1'])) {
                     <input type="radio" id="instructor" name="instructor" value="instructor" action="code.php" method="POST">
                     <br>
 
-                    <?php
-session_start();
-$con = mysqli_connect("localhost","root","","loginnexuz");
-
-if(isset($_POST['save_radio']))
-{
-    $instructor  = 1;
-   
-
-    $query = "INSERT INTO users (instructor) VALUES ($instructor)";
-    $query_run = mysqli_query($con, $query);
-
-    if($query_run)
-    {
-        $_SESSION['status'] = "test done";
-        header("Location: forgot.php");
-    }
-    else{
-        $_SESSION['status'] = "test done";
-        header("Location: forgot.php");
-    }
-}
-?>
 
                     <button name="submit1">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
 
-            <form action="#" method="POST">
+            <form action="login.php" method="POST">
                 <img onclick="location.href='index.php'" src="logo.png" class="logo">
 
                 <h1>Sign in</h1>
