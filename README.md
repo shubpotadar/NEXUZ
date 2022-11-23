@@ -3,7 +3,7 @@
 
 ![image](https://user-images.githubusercontent.com/90029094/203625834-6acf5c28-af3c-4296-b3ee-de828ce9b0e5.png)
 
-- It contains the courses which the user wants to buy and has added to the cart. By proceeding to pay the user can make the payments through PayPal payment integration and the transaction id and the payment id along with the course price will get stored in the payment table in the database . The courses for which the payment has been made for will get fetched to the profile page where the user’s courses will get displayed.
+- It contains the courses which the user wants to buy and has added to the cart. By proceeding to pay the user can make the payments through **PayPal Payment integration** and the transaction id and the payment id along with the course price will get stored in the payment table in the database . The courses for which the payment has been made for will get fetched to the profile page where the user’s courses will get displayed.
 ## LOGIN PAGE
 
 
